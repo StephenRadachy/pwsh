@@ -1,0 +1,3 @@
+cg,Set-LocationToGitRoot
+gh,Open-GitRepo
+fs,Invoke-GitWorkflow

@@ -1,0 +1,1 @@
+function Get-SshKeyPath() { return (Join-Path -Path $HOME -ChildPath '.ssh') }

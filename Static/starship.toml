@@ -1,0 +1,35 @@
+add_newline = false
+
+format = """
+${custom.repo_name}\
+${custom.git_dir}\
+${custom.git_branch}\
+${custom.git_status_dirty}\
+${custom.git_status_staged}"""
+
+[custom.repo_name]
+command = "echo $(git rev-parse --show-toplevel | tr '/' '\n' | tail -n1)"
+style = "white"
+when = "exit 0"
+format = "$output"
+
+[custom.git_dir]
+command = "echo $(pwd) | cut -c \"$(git rev-parse --show-toplevel | wc -c | tr -d ' ' | tr -d '\n')-\""
+style = "#AAAAAA"
+when = "exit 0"
+
+[custom.git_branch]
+symbol = " | "
+command = "git rev-parse --abbrev-ref HEAD"
+style = "purple"
+when = "exit 0"
+
+[custom.git_status_dirty]
+symbol = " "
+command = "echo 🚧"
+when = "status=$(git status --porcelain | wc -l | tr -d ' ' | tr -d '\n'); if [ \"$status\" -eq 0 ]; then exit 1; else exit 0; fi"
+
+[custom.git_status_staged]
+symbol = " "
+command = "echo 🚢"
+when = "status=$( git diff --name-only --cached | wc -l | tr -d ' ' | tr -d '\n'); if [ \"$status\" -eq 0 ]; then exit 1; else exit 0; fi"
