@@ -9,7 +9,7 @@
 function Write-Theme ([bool] $lastCommandFailed, [string] $with) {
     [System.Text.StringBuilder] $script:prompt = [System.Text.StringBuilder]::new()
     if (Get-GitStatus) {
-        $gitprompt = '[ ' + (&starship prompt) + ' ] '
+        $gitprompt = '[ ' + (&starship prompt) + '] '
         Write-Segment -Text $gitprompt -Color ([ConsoleColor]::gray)
     } else {
         Write-Segment -Text '[ ' -Color ([ConsoleColor]::White)
