@@ -7,5 +7,5 @@ function Invoke-Function() {
         $description
     )
 
-    git checkout -b "$($type.ToLower())/$($description.ToLower())"
+    git checkout -b "tm/stephen.radachy/$($type.ToLower())/$($description.ToLower())"
 }

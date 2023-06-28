@@ -13,8 +13,17 @@ function Invoke-Function() {
     if (!$branchName) { return }
 
     $split = $branchName.split("/")
-    $type = $split[0].ToUpper()
-    $storyId = $split[1].ToUpper()
+    
+
+    if ($split.length == 2) {
+        # for jdi/add-nodeid-to-span
+        $type = $split[0].ToUpper()
+        $storyId = $split[1].ToUpper()
+    } elseif ($split.length == 4) {
+        # for tm/stephen.radachy/jdi/add-nodeid-to-span
+        $type = $split[2].ToUpper()
+        $storyId = $split[3].ToUpper()
+    }
 
     if ($type -eq "STORY") {
         git commit -m "$($storyId): $($commitMessage)"
