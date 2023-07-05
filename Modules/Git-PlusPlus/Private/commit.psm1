@@ -14,17 +14,17 @@ function Invoke-Function() {
 
     $split = $branchName.split("/")
     
-
-    if ($split.length == 2) {
+    
+    if ($split.length -eq 2) {
         # for jdi/add-nodeid-to-span
         $type = $split[0].ToUpper()
         $storyId = $split[1].ToUpper()
-    } elseif ($split.length == 4) {
+    } elseif ($split.length -eq 4) {
         # for tm/stephen.radachy/jdi/add-nodeid-to-span
         $type = $split[2].ToUpper()
         $storyId = $split[3].ToUpper()
     }
-
+    
     if ($type -eq "STORY") {
         git commit -m "$($storyId): $($commitMessage)"
     } else {
