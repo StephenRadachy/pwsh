@@ -33,4 +33,4 @@ Set-PSReadLineOption -HistorySearchCursorMovesToEnd
 Set-PSReadlineKeyHandler -Key UpArrow -Function HistorySearchBackward
 Set-PSReadlineKeyHandler -Key DownArrow -Function HistorySearchForward
 
-$env:PATH = "/opt/homebrew/bin:$env:PATH"
+$env:PATH = "/opt/homebrew/bin:$HOME/.local/share/mise/shims:$env:PATH"
